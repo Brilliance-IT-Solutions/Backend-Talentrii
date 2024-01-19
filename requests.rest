@@ -1,0 +1,65 @@
+@baseUrl = http://localhost:3000/router/
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozLCJmaXJzdE5hbWUiOm51bGwsImxhc3ROYW1lIjpudWxsLCJ1c2VyTmFtZSI6bnVsbCwiZW1haWxJZCI6InRlc3RAdGVzdDEuY29tIiwicGFzc3dvcmQiOiJXWlJIR3JzQkVTcjh3WUZaOXN4MHRQVVJ1WmdHMmxtenl2V3B3WFBLejhVPSIsImF1dGhQcm92aWRlciI6bnVsbCwiZ2VuZGVyIjpudWxsLCJwcm9maWxlSW1hZ2UiOm51bGwsInNvY2lhbElkIjpudWxsLCJjcmVhdGVkRGF0ZSI6IjIwMjEtMTItMjFUMjM6MzU6MjcuMDAwWiIsImxhc3RMb2dpbiI6IjIwMjEtMTItMjlUMjI6MjI6NTAuMDAwWiIsIm1lc3NhZ2UiOiJMb2dpbiBTdWNjZXNzIn0sImlhdCI6MTY0MDgzNjM3MCwiZXhwIjoxNjQwOTIyNzcwfQ.2Z0imIGnmKUFz8kXgL66RZTdPjGLJfQl56yTPOw85Zs
+ ////*"https://dutchuppblob.s3.amazonaws.com/myFile-1640152925222.jpg",/*
+
+
+######################################################################
+### TEST SERVER
+GET {{baseUrl}} HTTP/1.1
+command: testServer
+
+
+######################################################################
+### SIGNUP
+POST {{baseUrl}}signUp HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "test",
+    "emailId": "test@test.com",
+    "password": "1235",
+    "profilePicture": "test"
+}
+
+
+######################################################################
+### LOGIN
+POST {{baseUrl}}login HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "test", 
+    "emailId": "test@test1.com",
+    "password": "12345",
+    "profileImage": "https://dutchuppblob.s3.amazonaws.com/myFile-1618812745719.jpg"
+}
+
+
+######################################################################
+### UPLOAD FILE 
+POST {{baseUrl}}blob/uploadfile HTTP/1.1
+Content-Disposition: form-data; name="myFile"; filename="heart_grey.png";
+Content-Type: image/png
+
+
+
+######################################################################
+### CREATE CHALLANGE
+POST {{baseUrl}}createChallange HTTP/1.1
+content-type: application/json
+token: {{token}}
+
+{
+    "title": "user2",
+    "description": "12345",
+    "url": "https://dutchuppblob.s3.amazonaws.com/myFile-1640155995096.mp4",
+    "latitude": "12345",
+    "longitude": "12345"
+}
+
+
+######################################################################
+### GET DASHBOARD DATA
+POST {{baseUrl}}getDashboardData HTTP/1.1
+content-type: application/json
+token: {{token}}
