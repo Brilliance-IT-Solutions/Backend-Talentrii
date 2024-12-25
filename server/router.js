@@ -23,7 +23,7 @@ const GoogleSignUpDB = require("./controllersDB/googleSignUp")
 const GoogleSignInDB = require("./controllersDB/googleSignInDB")
 
 router.get('/', function (req, res, next) {
-    res.send('SERVER STARTED');
+    res.send('SERVER STARTED 123');
 });
 
 router.post('/login', login.loginDB)
